@@ -26560,14 +26560,53 @@
 	    "div",
 	    null,
 	    React.createElement(
-	      "h3",
-	      null,
+	      "h1",
+	      { className: "text-center" },
 	      "About"
 	    ),
 	    React.createElement(
 	      "p",
 	      null,
-	      "Welcome to the About Page"
+	      "This is an app created in React"
+	    ),
+	    React.createElement(
+	      "h4",
+	      null,
+	      "Core components used:"
+	    ),
+	    React.createElement(
+	      "ul",
+	      null,
+	      React.createElement(
+	        "li",
+	        null,
+	        "React"
+	      ),
+	      React.createElement(
+	        "li",
+	        null,
+	        "React Router"
+	      ),
+	      React.createElement(
+	        "li",
+	        null,
+	        "React Route"
+	      ),
+	      React.createElement(
+	        "li",
+	        null,
+	        "React Link"
+	      ),
+	      React.createElement(
+	        "li",
+	        null,
+	        "Axios"
+	      ),
+	      React.createElement(
+	        "li",
+	        null,
+	        "Foundation (dont like it)"
+	      )
 	    )
 	  );
 	};
