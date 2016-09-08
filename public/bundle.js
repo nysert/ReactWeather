@@ -24935,7 +24935,14 @@
 
 	  onSearch: function onSearch(event) {
 	    event.preventDefault();
-	    alert("not yet wired up");
+
+	    var location = this.refs.location.value;
+	    var encodedLocation = encodeURIComponent(location);
+
+	    if (location.length > 0) {
+	      this.refs.location.value = "";
+	      window.location.hash = "#/?location=" + encodedLocation;
+	    }
 	  },
 	  render: function render() {
 	    return React.createElement(
@@ -24993,7 +25000,7 @@
 	            React.createElement(
 	              "li",
 	              null,
-	              React.createElement("input", { type: "search", placeholder: "Enter A City Name" })
+	              React.createElement("input", { type: "search", placeholder: "Enter A City Name", ref: "location" })
 	            ),
 	            React.createElement(
 	              "li",
@@ -25034,7 +25041,9 @@
 
 	    this.setState({
 	      isLoading: true,
-	      errorMessage: undefined
+	      errorMessage: undefined,
+	      location: undefined,
+	      temp: undefined
 	    });
 
 	    openWeatherMap.getTemp(location).then(function (temp) {
@@ -25049,6 +25058,22 @@
 	        errorMessage: error.message
 	      });
 	    });
+	  },
+	  componentDidMount: function componentDidMount() {
+	    var location = this.props.location.query.location;
+
+	    if (location && location.length > 0) {
+	      this.handleSearch(location);
+	      window.location.hash = "#/";
+	    }
+	  },
+	  componentWillReceiveProps: function componentWillReceiveProps(newProps) {
+	    var location = newProps.location.query.location;
+
+	    if (location && location.length > 0) {
+	      this.handleSearch(location);
+	      window.location.hash = "#/";
+	    }
 	  },
 	  render: function render() {
 	    var _state = this.state;
